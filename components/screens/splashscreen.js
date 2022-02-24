@@ -40,15 +40,15 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   image: {
-    width: 650,
-    right: 110,
+    width: 660,
+    height:400,
+    right: 120,
     marginTop: 100
   },
   image1: {
-    width: 350,
-    height: 80,
-    //marginLeft: 20,
-    marginRight: 20,
+    width: 360,
+    height: 70,
+    marginLeft: 25,
     bottom: 50,
   },
   icon: {
