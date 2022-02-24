@@ -61,7 +61,8 @@ export const Login = ({ navigation }) => {
       });
   }
   function Login1() {
-    if (data.isValidEmail && data.isValidPassword) {
+    navigation.navigate("Drawer1");
+    /*if (data.isValidEmail && data.isValidPassword) {
       let item = { password, email };
       axios
         .post("http://192.168.1.13:3000/api/v1/users/login", item, {
@@ -73,7 +74,6 @@ export const Login = ({ navigation }) => {
           withCredentials: true,
         })
         .then(function (response) {
-          navigation.navigate("Drawer1");
         })
         .catch(function (error) {
           if (error.response.status === 400) {
@@ -85,7 +85,7 @@ export const Login = ({ navigation }) => {
             confirm();
           }
         });
-    }
+    }*/
   }
   function Emilvalidator() {
     /*if(email=="")
