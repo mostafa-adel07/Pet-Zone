@@ -12,7 +12,7 @@ export const Drawer1=()=>{
       <Drawer.Navigator style ={styles.header}  drawerContent={props => <DrawerContent {...props} />}
           screenOptions={{
            headerStyle:{
-              elevation:0
+              height:100
            },
            headerTransparent:true,
            headerShown:true,
