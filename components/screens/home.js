@@ -2,22 +2,22 @@ import * as React from 'react';
 import { Text, View, StyleSheet,SafeAreaView,StatusBar,ScrollView,TouchableOpacity } from 'react-native';
 
 export const Home=({navigation})=>{
-  function Adopt(){
+  /*function Adopt(){
    navigation.navigate('AdoptionList')
   }
   function Breed(){
     navigation.navigate('BreedingList')
-   }
+   }*/
   return(
   <View style={styles.container1}>
-     <TouchableOpacity style={styles.buttoncontainer1} onPress={Adopt}>
+     <TouchableOpacity style={styles.buttoncontainer1} >
         <Text style={styles.buttontext1}>Adoption</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.buttoncontainer1} onPress={Breed}>
+      <TouchableOpacity style={styles.buttoncontainer1} >
         <Text style={styles.buttontext1}>Breeding</Text>
       </TouchableOpacity>
  </View>
-  ); 
+  );
 }
 
 const styles = StyleSheet.create({
