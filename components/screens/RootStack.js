@@ -21,6 +21,8 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SP2 } from "./serviceProvider/SP2";
 import { Drawer1 } from "./Drawer";
 import { NavigationContainer } from "@react-navigation/native";
+import { Filter } from "./Filter";
+import { AdoptionList } from "./AdoptionList";
 const RootStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 export const RootStackSCreen = ({ navigation }) => (
@@ -43,5 +45,7 @@ export const RootStackSCreen = ({ navigation }) => (
     <RootStack.Screen name="SignupUser2" component={SignupUser2} />
     <RootStack.Screen name="SP1" component={SP1} />
     <RootStack.Screen name="SP2" component={SP2} />
+    <RootStack.Screen name="Filter" component={Filter} />
+    <RootStack.Screen name="AdoptionList" component={AdoptionList} />
   </RootStack.Navigator>
 );
