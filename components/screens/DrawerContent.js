@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from "react";
 import { View, StyleSheet,SafeAreaView,StatusBar,ScrollView,TouchableOpacity ,Image} from 'react-native';
 import {
     DrawerContentScrollView,
@@ -16,10 +16,6 @@ import {
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 export function DrawerContent(props){
-    const toggleDrawer = () => {
-        //Props to open/close the drawer
-        props.navigationProps.toggleDrawer();
-      };
     return(
     <View style={{flex:1}}>
         <DrawerContentScrollView {...props}>
