@@ -19,9 +19,8 @@ import { Adoption } from "./Adoption";
 import axios from "axios";
 import { Ionicons } from "@expo/vector-icons";
 //import { Icon } from "react-native-paper/lib/typescript/components/Avatar/Avatar";
-export const AdoptionList = ({ navigation }) => {
+export const AdoptionList = () => {
   const [datainfo, Setdatainfo] = useState([]);
-
   useEffect(() => {
     axios
       .get("http://192.168.1.13:3000/api/v1/offerAdoption")
@@ -35,7 +34,7 @@ export const AdoptionList = ({ navigation }) => {
 
   function getfilter() {
     axios
-      .get("http://192.168.1.13:3000/api/v1/offerAdoption" + url, {
+      .get("http://192.168.1.13:3000/api/v1/offerAdoption" + string2, {
         headers: {
           Cookie: "cookie1=value; cookie2=value; cookie3=value;",
           Authorization: "Bearer my-token",
@@ -51,6 +50,8 @@ export const AdoptionList = ({ navigation }) => {
   }
 
   const [petType, setpetType] = useState("");
+  const [petGender,setpetGender] = useState("");
+  const [petColor,setpetColor] = useState("");
   const [value, setValue] = useState(null);
   const [label, setlabel] = useState("");
   const [isFocus, setIsFocus] = useState(false);
@@ -59,25 +60,110 @@ export const AdoptionList = ({ navigation }) => {
   const [isFocus1, setIsFocus1] = useState(false);
   const [value2, setValue2] = useState(null);
   const [label2, setlabel2] = useState("");
-  const [url, seturl] = useState("");
   const [isFocus2, setIsFocus2] = useState(false);
-
+  const [url, seturl] = useState("");
+  const [shouldShow, setShouldShow] = useState(false);
+  const[isfull,setisfull]=useState(false)
   function filterTypeDog() {
+    setpetType("dog")
     seturl("?petType=dog");
+    setisfull(true)
     getfilter();
   }
   function filterTypeCat() {
+    setpetType("cat")
     seturl("?petType=cat");
+    setisfull(true)
     getfilter();
   }
-  function filter() {
-    navigation.navigate("Filter", {
-      petType: petType,
-    });
-  }
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
+ 
+ function filter(){
+  setShouldShow(!shouldShow)
+ }
+function Apply(){
+   var string = ''
+   var string1= ''
+   var string2= ''
+  {petColor==""?null:isfull==false?string='?petColor='+petColor:isfull==true?string='&petColor='+petColor:null
+  petGender==""?null:isfull==false&&petColor==""?string1='?petGender='+petGender:string1='&petGender='+petGender}
+
+  string2 = url+string+string1
+  console.log(string2)
+  getfilter()
+  setShouldShow(false)//navigate to adoptionlist
+}
+ const data = [
+  { label:'male', value: '1' },
+  { label:'female', value: '2' },
+];
+  const data1 = [
+  { label1:'black', value1: '1' },
+  { label1:'white', value1: '2' },
+  { label1:'brown', value1: '3' },
+  { label1:'gray', value1: '4' },
+  { label1:'yellow', value1: '5' },
+  { label1:'blue', value1: '6' },
+  { label1:'pink', value1: '7' },
+  { label1:'golden', value1: '8' },
+  { label1:'orange', value1: '9' },
+  { label1:'silver', value1: '10' },
+];
+
+  return ( 
+    <SafeAreaView style ={styles.container}>
+{shouldShow ?
+    (
+      <>
+       <View style={styles.header}>
+      <Text style={styles.textheader}>Filter</Text>
+      </View>
+              <Dropdown
+                style={[styles.dropdown, isFocus ]}
+                placeholderStyle={styles.placeholderStyle}
+                data={data}
+                maxHeight={100}
+                labelField="label"
+                valueField="value"
+                placeholder={!isFocus ? ' Select Gender' : '...'}
+                value={value}
+                onFocus={() => setIsFocus(true)}
+                onBlur={() => setIsFocus(false)}
+                onChange={item => {
+                  setValue(item.value);
+                  setlabel(item.label);
+                  setpetGender(item.label);
+                  setIsFocus(false);
+                }}
+        />
+           <Dropdown
+                style={[styles.dropdown1, isFocus1 ]}
+                placeholderStyle={styles.placeholderStyle}
+                selectedTextStyle={styles.selectedTextStyle}
+                data={data1}
+                maxHeight={100}
+                paddingTop={50}
+                labelField="label1"
+                valueField="value1"
+                placeholder={!isFocus1 ? ' Select Color' : '...'}
+                value={value1}
+                onFocus={() => setIsFocus1(true)}
+                onBlur={() => setIsFocus1(false)}
+                onChange={item => {
+                  setValue1(item.value1);
+                  setlabel1(item.label1);
+                  setpetColor(item.label1);
+                  setIsFocus1(false);
+                }}
+        />
+        <TouchableOpacity style = {styles.buttoncontainer1} onPress={Apply}>
+        <Text style = {styles.buttontext1}>Apply</Text>
+        </TouchableOpacity>
+       </>
+      
+     
+    ):(
+<>
+<View style={styles.header}>
         <Text style={styles.textheader}>Adoption</Text>
       </View>
       <Text style={styles.txt}>Types</Text>
@@ -144,6 +230,7 @@ export const AdoptionList = ({ navigation }) => {
         color="black"
         onPress={filter}
       />
+      
       <View style={styles.container}>
         <FlatList
           data={datainfo}
@@ -154,7 +241,10 @@ export const AdoptionList = ({ navigation }) => {
           contentContainerStyle={{ padding: 10 }}
         />
       </View>
-    </SafeAreaView>
+    </>
+    )
+}
+</SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
@@ -257,27 +347,51 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: 100,
   },
-  dropdown: {
-    height: 40,
-    width: 100,
-    marginLeft: 10,
-    borderColor: "gray",
-    borderWidth: 0.5,
-    borderRadius: 8,
-    top: 50,
-    backgroundColor: "rgb(255, 89, 89)",
-    justifyContent: "space-between",
-    paddingHorizontal: 12,
+  textheader:{
+    marginTop:30,
+    fontSize:30,
+    color:"white",
+    fontWeight:"bold"
   },
-  dropdown1: {
-    height: 40,
-    width: 100,
-    marginLeft: 190,
-    top: 10,
-    borderColor: "gray",
-    borderWidth: 0.5,
-    borderRadius: 8,
-    backgroundColor: "rgb(255, 89, 89)",
-    paddingHorizontal: 12,
-  },
+    buttoncontainer1: {
+      borderRadius: 15,
+      width: 160,
+      height: 45,
+      backgroundColor: "#ED7354",
+      paddingTop: 1,
+      justifyContent: 'center',
+      marginTop: 390,
+      marginLeft:120,
+      paddingLeft: 60,
+    },
+    buttontext1: {
+      textAlign: 'center',
+      color: 'white',
+      fontSize: 20,
+      right: 30,
+      fontWeight:'bold'
+    },
+    dropdown: {
+        height: 40,
+        width:170,
+        marginLeft:18,
+        borderColor: 'gray',
+        borderWidth: 0.5,
+        borderRadius: 8,
+        top:160,
+        backgroundColor:"white",
+       justifyContent: 'space-between',
+        paddingHorizontal: 12,
+      },
+        dropdown1: {
+        height: 40,
+        width:170,
+        marginLeft:230,
+        top:120,
+        borderColor: 'gray',
+        borderWidth: 0.5,
+        borderRadius: 8,
+        backgroundColor:"white",
+        paddingHorizontal: 12,
+      },
 });
