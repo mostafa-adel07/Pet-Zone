@@ -31,10 +31,10 @@ export const BreedingList = () => {
         console.log(err);
       });
   }, []);
-
+ 
   function getfilter() {
     axios
-      .get("http://192.168.1.13:3000/api/v1/offerAdoption" + string2, {
+      .get("http://192.168.1.13:3000/api/v1/offerAdoption" + url, {
         headers: {
           Cookie: "cookie1=value; cookie2=value; cookie3=value;",
           Authorization: "Bearer my-token",
@@ -48,10 +48,10 @@ export const BreedingList = () => {
         console.log(err.response.data);
       });
   }
-
   const [petType, setpetType] = useState("");
   const [petGender,setpetGender] = useState("");
   const [petColor,setpetColor] = useState("");
+  const [petBreed,setpetBreed] = useState("")
   const [value, setValue] = useState(null);
   const [label, setlabel] = useState("");
   const [isFocus, setIsFocus] = useState(false);
@@ -81,17 +81,35 @@ export const BreedingList = () => {
   setShouldShow(!shouldShow)
  }
 function Apply(){
-   var string = ''
-   var string1= ''
-   var string2= ''
-  {petColor==""?null:isfull==false?string='?petColor='+petColor:isfull==true?string='&petColor='+petColor:null
-  petGender==""?null:isfull==false&&petColor==""?string1='?petGender='+petGender:string1='&petGender='+petGender}
+  var string = ''
+  var string1= ''
+  var string2=''
+  {petColor==""?null:isfull==false?string='?petColor='+petColor:isfull==true?string='&petColor='+petColor:null;
+  petGender==""?null:isfull==false&&petColor==""?string1='?petGender='+petGender:string1='&petGender='+petGender;
+  petBreed==""?null:isfull==false&&petColor==""&&petGender==""?string2='?petBreed='+petBreed:string2='&petBreed='+petBreed;}
 
-  string2 = url+string+string1
-  console.log(string2)
-  getfilter()
+  var string3 = url+string+string1+string2
+  console.log(string3)
+  //getfilter()
+  axios
+  .get("http://192.168.1.13:3000/api/v1/offerAdoption" + string3, {
+    headers: {
+      Cookie: "cookie1=value; cookie2=value; cookie3=value;",
+      Authorization: "Bearer my-token",
+    },
+    withCredentials: true,
+  })
+  .then((res) => {
+    Setdatainfo(res.data.adoptedOffer);
+  })
+  .catch((err) => {
+    console.log(err.response.data);
+  });
   setShouldShow(false)//navigate to adoptionlist
 }
+
+
+
  const data = [
   { label:'male', value: '1' },
   { label:'female', value: '2' },
@@ -108,6 +126,20 @@ function Apply(){
   { label1:'orange', value1: '9' },
   { label1:'silver', value1: '10' },
 ];
+
+  const data3 = [
+  {label2:'persian',value2:'1'},
+  {label2:'maine coon',value2:'2'},
+  {label2:'bengal',value2:'3'},
+  {label2:'ragdoll',value2:'4'},
+];
+
+ const data4 = [
+  {label2:'boxer',value2:'1'},
+  {label2:'dobermann',value2:'2'},
+  {label2:'golden retreiver',value2:'3'},
+  {label2:'siberian husky',value2:'4'},
+ ];
 
   return ( 
     <SafeAreaView style ={styles.container}>
@@ -155,6 +187,49 @@ function Apply(){
                   setIsFocus1(false);
                 }}
         />
+{
+  petType =='cat'?
+  <Dropdown
+  style={[styles.dropdown2, isFocus2 ]}
+  placeholderStyle={styles.placeholderStyle}
+  selectedTextStyle={styles.selectedTextStyle}
+  data={data3}
+  maxHeight={100}
+  paddingTop={50}
+  labelField="label2"
+  valueField="value2"
+  placeholder={!isFocus2 ? ' Select Breed' : '...'}
+  value={value2}
+  onFocus={() => setIsFocus2(true)}
+  onBlur={() => setIsFocus2(false)}
+  onChange={item => {
+    setValue2(item.value2);
+    setlabel2(item.label2);
+    setpetBreed(item.label2);
+    setIsFocus2(false);
+  }}
+/>:petType=='dog'?<Dropdown
+  style={[styles.dropdown2, isFocus2 ]}
+  placeholderStyle={styles.placeholderStyle}
+  selectedTextStyle={styles.selectedTextStyle}
+  data={data4}
+  maxHeight={100}
+  paddingTop={50}
+  labelField="label2"
+  valueField="value2"
+  placeholder={!isFocus2 ? ' Select Breed' : '...'}
+  value={value2}
+  onFocus={() => setIsFocus2(true)}
+  onBlur={() => setIsFocus2(false)}
+  onChange={item => {
+    setValue2(item.value2);
+    setlabel2(item.label2);
+    setpetBreed(item.label2);
+    setIsFocus2(false);
+  }}
+/>:null
+}
+        
         <TouchableOpacity style = {styles.buttoncontainer1} onPress={Apply}>
         <Text style = {styles.buttontext1}>Apply</Text>
         </TouchableOpacity>
@@ -388,6 +463,17 @@ const styles = StyleSheet.create({
         width:170,
         marginLeft:230,
         top:120,
+        borderColor: 'gray',
+        borderWidth: 0.5,
+        borderRadius: 8,
+        backgroundColor:"white",
+        paddingHorizontal: 12,
+      },
+      dropdown2: {
+        height: 40,
+        width:170,
+        marginLeft:20,
+        top:160,
         borderColor: 'gray',
         borderWidth: 0.5,
         borderRadius: 8,
