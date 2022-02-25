@@ -11,11 +11,13 @@ import {
 import { Card } from "react-native-paper";
 import { Searchbar } from "react-native-paper";
 
-export const Adoption = ({ info }) => {
+export const Adoption = ({ info,navigation }) => {
   //console.log(info);
-
+function adopt(){
+  navigation.navigate('SelectedPet')
+}
   return (
-    <Card style={styles.card} onPress={() => {}}>
+    <Card style={styles.card} onPress={adopt}>
       <Card.Cover
         key={info.petName}
         style={styles.cover}
