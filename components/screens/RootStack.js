@@ -45,7 +45,5 @@ export const RootStackSCreen = ({ navigation }) => (
     <RootStack.Screen name="SignupUser2" component={SignupUser2} />
     <RootStack.Screen name="SP1" component={SP1} />
     <RootStack.Screen name="SP2" component={SP2} />
-    <RootStack.Screen name="Filter" component={Filter} />
-    <RootStack.Screen name="AdoptionList" component={AdoptionList} />
   </RootStack.Navigator>
 );
