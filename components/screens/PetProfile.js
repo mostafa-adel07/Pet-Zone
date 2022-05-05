@@ -23,16 +23,13 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 
 
-export const PetProfile = ({route}) => {
-const [petinfo, Setpetinfo] = useState([]);
+export const PetProfile = ({route,navigation}) => {
+const [petinfo, Setpetinfo] = useState({});
 const{id} = route.params
-const datainfo = [
-  {petName:"charlie" , petType: "cat",petGender:"male",petBreed:"persian" ,petage:'10' ,petWeight:'56' , petColor:"white",   petProfilePic:"https://upload.wikimedia.org/wikipedia/commons/1/15/White_Persian_Cat.jpg"},
-{petName: "leo" ,petType: "dog"  ,petGender:"male",petBreed:"pug"  ,petage:'15'  ,petWeight:'72' ,  petColor:"fawn",    petProfilePic: "https://media.istockphoto.com/photos/pug-sitting-and-panting-1-year-old-isolated-on-white-picture-id450709593?k=20&m=450709593&s=612x612&w=0&h=82zzJc3Cz39B6LyrQ_N2b4zXxYzZIEH9aNDZWzrZspg="},
-{petName:"simba"  ,petType: "dog", petGender:"male",petBreed:"Labrador Retriever"  ,petage:'6'  ,petWeight:'40', petColor:"black"  ,  petProfilePic:"https://elevageduverger.ca/wp-content/uploads/2019/12/Mel-and-Jak-24_square.jpg"},
-{petName:"luna" ,petType: "dog",petGender:"female",petBreed:"Maltipoo"  ,petage:'20'  ,petWeight:'96'  , petColor:"brown" , petProfilePic:"https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2021%2F02%2F23%2Fmaltipoo-on-table-390083464-2000.jpg"},
- {petName: "lola" ,petType:"cat", petGender:"female",petBreed:"Siberian"  ,petage:'8'  ,petWeight:'48' ,  petColor:"white" ,  petProfilePic:"https://cf.ltkcdn.net/cats/images/orig/246623-1877x1251-siberian-cat.jpg"}
-];
+const datainfo = 
+  {petName:"charlie" , petType: "cat",petGender:"male",petBreed:"persian" ,petage:'10' ,petWeight:'56' , petColor:"white", historyVaccine:true,  petProfilePic:"https://upload.wikimedia.org/wikipedia/commons/1/15/White_Persian_Cat.jpg"}
+  
+
   const [image, SetImage] = useState(
     'https://upload.wikimedia.org/wikipedia/commons/1/15/White_Persian_Cat.jpg'
   );
@@ -85,7 +82,11 @@ const [isSwitchOn1, setIsSwitchOn1] = React.useState(false);
        console.log(err.response.data);
      });
     };
-   
+  function checkHistoryVacciness(){
+   {
+     datainfo.historyVaccine == true?navigation.navigate("PetVaccine",{id:id}):navigation.navigate("HistoryVaccine",{id:id,petType:datainfo.petType})
+   }
+  } 
 
 return (
    <SafeAreaView>
@@ -102,11 +103,14 @@ return (
         <Text style={styles.buttontext}>Edit Profile</Text>
       </TouchableOpacity>
 
+      <TouchableOpacity style={styles.buttoncontainer1} onPress = {checkHistoryVacciness} >
+        <Text style={styles.buttontext1}>history vacciness</Text>
+      </TouchableOpacity>
         <Image
                 source={{ uri: image }}
                 resizeMode="stretch"
                 style={styles.avatar}></Image>
-                <Text  style={styles.title0}> Gabaski</Text>
+                <Text  style={styles.title0}> {datainfo.petName}</Text>
 
 <Text style = {styles.title1}>  Gender: {datainfo.petGender}</Text>
 <Text style = {styles.title2}>  Type: {datainfo.petType}</Text>
@@ -216,6 +220,25 @@ buttoncontainer: {
     fontSize: 14,
     right: 30,
   },
+
+  buttoncontainer1: {
+    borderRadius: 15,
+    width: 130,
+    height: 50,
+   backgroundColor: "#3D405B",
+    paddingTop: 1,
+    justifyContent: "center",
+    marginTop: 15,
+    paddingLeft: 60,
+    bottom:10,
+    right:125,
+  },
+   buttontext1: {
+    textAlign: "center",
+    color: "white",
+    fontSize: 14,
+    right: 30,
+  },
    icon1: {
     position: "absolute",
     top: 28,
@@ -233,13 +256,13 @@ shadowRadius: 4.84,
 elevation: 5,
  },
  switch1:{
-   top:250,
+   top:305,
    paddingBottom:0,
    left:-350,
    
  },
  switchtext:{
-   top:215,
+   top:270,
    paddingBottom:0,
    left:60,
     paddingLeft:15,
@@ -256,14 +279,14 @@ color:"black",
 fontWeight:"bold",
 left:-2,
 marginBottom:5,
-top:250,
+top:290,
  },
  descrption:{
 fontSize:17,
 color:"black",
-top:260,
+top:300,
 //fontWeight:"bold",
-//left:-125,
+left:6,
 //marginBottom:5,
  },
  title:{ fontWeight:"bold", fontSize:15, color:"gray",left:45,top:5,},

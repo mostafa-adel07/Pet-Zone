@@ -14,22 +14,26 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import { Card } from "react-native-paper";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { RootStackSCreen } from "./components/screens/RootStack";
-
 import "react-native-gesture-handler";
-const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
+import {PetProfile} from './components/screens/PetProfile';
+import { SelectedPet } from "./components/screens/SelectedAdoptPet";
+import { PetVaccines } from "./components/screens/PetVaccines";
+import { PetAccount } from "./components/screens/PetAccount";
+import { HistoryVaccines } from "./components/screens/historyvaccines";
+import { VaccinesDescription } from "./components/screens/vaccinesdescription";
+
 export default function App() {
   return (
     <>
-      <NavigationContainer>
-        <RootStackSCreen />
-      </NavigationContainer>
+    <NavigationContainer>
+      <RootStackSCreen/>
+    </NavigationContainer>
     </>
+    /*<>
+    <HistoryVaccines/>
+    </>*/
   );
 }
 /*const styles = StyleSheet.create({

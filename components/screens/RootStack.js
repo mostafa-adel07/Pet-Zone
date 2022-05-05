@@ -21,12 +21,18 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { SP2 } from "./serviceProvider/SP2";
 import { Drawer1 } from "./Drawer";
 import { NavigationContainer } from "@react-navigation/native";
-import { Filter } from "./Filter";
-import { AdoptionList } from "./AdoptionList";
-const RootStack = createStackNavigator();
-const Drawer = createDrawerNavigator();
-export const RootStackSCreen = ({ navigation }) => (
-  <RootStack.Navigator
+import {SelectedAdoptPet} from './SelectedAdoptPet';
+import {AdoptionList} from './AdoptionList'
+import { PetProfile } from "./PetProfile";
+import { SelectedBreedPet } from "./SelectedBreedPet";
+import { PetAccount } from "./PetAccount";
+import { PetVaccines } from "./PetVaccines";
+import { HistoryVaccines } from "./historyvaccines";
+import { VaccinesDescription } from "./vaccinesdescription";
+const Stack = createStackNavigator();
+//const Drawer = createDrawerNavigator();
+export const RootStackSCreen = () => (
+  <Stack.Navigator
     screenOptions={{
       headerStyle: {
         backgroundColor: "transparent",
@@ -36,14 +42,22 @@ export const RootStackSCreen = ({ navigation }) => (
       headerLeft: null,
     }}
   >
-    <RootStack.Screen name="Splahscreen" component={Splashscreen} />
-    <RootStack.Screen name="Login" component={Login} />
-    <RootStack.Screen name="Drawer1" component={Drawer1} />
-    <RootStack.Screen name="typeSignup" component={TypeSignup} />
-    <RootStack.Screen name="SignupUser" component={SignupUser} />
-    <RootStack.Screen name="SignupUser1" component={SignupUser1} />
-    <RootStack.Screen name="SignupUser2" component={SignupUser2} />
-    <RootStack.Screen name="SP1" component={SP1} />
-    <RootStack.Screen name="SP2" component={SP2} />
-  </RootStack.Navigator>
+    <Stack.Screen name="Splahscreen" component={Splashscreen} />
+    <Stack.Screen name="Login" component={Login} />
+    <Stack.Screen name="Drawer1" component={Drawer1} />
+    <Stack.Screen name="typeSignup" component={TypeSignup} />
+    <Stack.Screen name="SignupUser" component={SignupUser} />
+    <Stack.Screen name="SignupUser1" component={SignupUser1} />
+    <Stack.Screen name="SignupUser2" component={SignupUser2} />
+    <Stack.Screen name="SP1" component={SP1} />
+    <Stack.Screen name="SP2" component={SP2} />
+    <Stack.Screen name="PetProfile" component={PetProfile}/>
+    <Stack.Screen name="PetAccount" component={PetAccount}/>
+    <Stack.Screen name="SelectedAdoptPet" component={SelectedAdoptPet}/>
+    <Stack.Screen name="SelectedBreedPet" component={SelectedBreedPet}/>
+    <Stack.Screen name="PetVaccine" component={PetVaccines}/>
+    <Stack.Screen name="HistoryVaccine" component={HistoryVaccines}/>
+    <Stack.Screen name="VaccineDescription" component={VaccinesDescription}/>
+    
+  </Stack.Navigator>
 );

@@ -6,11 +6,10 @@ import { SelectedPet } from "./SelectedAdoptPet";
 import { DrawerContent } from "./DrawerContent";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
-import { styles } from "react-native-element-dropdown/src/TextInput/styles";
 const Drawer = createDrawerNavigator();
 export const Drawer1=()=>{
     return(
-      <Drawer.Navigator style ={styles.header}  drawerContent={props => <DrawerContent {...props} />}
+      <Drawer.Navigator  drawerContent={props => <DrawerContent {...props} />}
           screenOptions={{
            headerStyle:{
               height:100

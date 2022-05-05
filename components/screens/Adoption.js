@@ -1,4 +1,5 @@
-import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import React, { useState } from "react";
 import {
   StatusBar,
   StyleSheet,
@@ -10,22 +11,23 @@ import {
 } from "react-native";
 import { Card } from "react-native-paper";
 import { Searchbar } from "react-native-paper";
-
-export const Adoption = ({ info,navigation }) => {
+import { SelectedPet } from "./SelectedAdoptPet";
+export const Adoption = ({ info }) => {
   //console.log(info);
-function adopt(){
-  navigation.navigate('SelectedPet')
+const[isselected,setisselected]=useState(false)
+function selectpet(){
+  
 }
   return (
-    <Card style={styles.card} onPress={adopt}>
-      <Card.Cover
-        key={info.petName}
-        style={styles.cover}
-        source={{ uri: info.petProfilePic }}
-      />
-      <Text style={styles.title}> Name: {info.petName}</Text>
-      <Text style={styles.title}> Age: {info.petage}</Text>
-      <Text style={styles.title}>Type: {info.petType}</Text>
+    <Card style={styles.card} onPress={selectpet}>
+    <Card.Cover
+      key={info.petName}
+      style={styles.cover}
+      source={{ uri: info.petProfilePic }}
+    />
+    <Text style={styles.title}> Name: {info.petName}</Text>
+    <Text style={styles.title}> Age: {info.petage}</Text>
+    <Text style={styles.title}>Type: {info.petType}</Text>
     </Card>
   );
 };

@@ -70,21 +70,20 @@ export const UpdateUserProfile = ({navigation}) => {
 
   function update(){
     let userData = {username,phone,email,password,nid,country,city,address,image}
-    console.log("userData",userData)
-    fetch(``,{
-      method:'PUT',
-      headers:{
-        'Accept':'application/json',
-        'Content-Type':'application/json'
+    axios
+    .put("", userData, {
+      headers: {
+        "Content-Type": "application/json",
+        "My-Custom-Header": "foobar",
+        Authorization: "Bearer my-token",
       },
-      body:JSON.stringify(userData)
-    }).then((result)=>{
-      result.json().then((resp)=>{
-        console.warn(resp)
-      })
     })
-    
-    .then
+    .then(function (response) {
+      console.log(response)
+    })
+    .catch(function (error) {
+      console.log(error); 
+    });
   }
   const addImage = async () => {
     let _image = await ImagePicker.launchImageLibraryAsync({
