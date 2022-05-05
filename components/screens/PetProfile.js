@@ -27,7 +27,7 @@ export const PetProfile = ({route,navigation}) => {
 const [petinfo, Setpetinfo] = useState({});
 const{id} = route.params
 const datainfo = 
-  {petName:"charlie" , petType: "cat",petGender:"male",petBreed:"persian" ,petage:'10' ,petWeight:'56' , petColor:"white", historyVaccine:true,  petProfilePic:"https://upload.wikimedia.org/wikipedia/commons/1/15/White_Persian_Cat.jpg"}
+  {petName:"charlie" , petType: "cat",petGender:"male",petBreed:"persian" ,petage:'10' ,petWeight:'56' , petColor:"white", historyVaccine:false,  petProfilePic:"https://upload.wikimedia.org/wikipedia/commons/1/15/White_Persian_Cat.jpg"}
   
 
   const [image, SetImage] = useState(
