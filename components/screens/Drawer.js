@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import React,{useState,useEffect} from "react";
 import { StatusBar, StyleSheet, SafeAreaView, Text, View ,FlatList,Button,TouchableOpacity,ScrollView,Image} from "react-native";
 import { MainTabScreen } from "./MainTabScreen";
+import { SelectedPet } from "./SelectedAdoptPet";
 import { DrawerContent } from "./DrawerContent";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import 'react-native-gesture-handler';

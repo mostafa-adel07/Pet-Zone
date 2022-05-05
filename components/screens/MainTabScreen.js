@@ -10,7 +10,7 @@ import {
   Image,
 } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { UserProfile } from "./UserProfile";
+import {UserProfile} from './UserProfile';
 import { Home } from "./home";
 import { AdoptionList } from "./AdoptionList";
 import { BreedingList } from "./BreedingList";
