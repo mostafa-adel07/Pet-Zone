@@ -23,17 +23,17 @@ import { PetVaccines } from "./components/screens/PetVaccines";
 import { PetAccount } from "./components/screens/PetAccount";
 import { HistoryVaccines } from "./components/screens/historyvaccines";
 import { VaccinesDescription } from "./components/screens/vaccinesdescription";
-
+import {PetDetection} from "./components/screens/PetDetection";
 export default function App() {
   return (
-    <>
+    /*<>
     <NavigationContainer>
       <RootStackSCreen/>
     </NavigationContainer>
-    </>
-    /*<>
-    <HistoryVaccines/>
     </>*/
+    <>
+    <PetDetection/>
+    </>
   );
 }
 /*const styles = StyleSheet.create({
