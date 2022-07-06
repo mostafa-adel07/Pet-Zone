@@ -24,16 +24,25 @@ import { PetAccount } from "./components/screens/PetAccount";
 import { HistoryVaccines } from "./components/screens/historyvaccines";
 import { VaccinesDescription } from "./components/screens/vaccinesdescription";
 import {PetDetection} from "./components/screens/PetDetection";
+import {BookVet } from "./components/screens/BookVet";
+import { Hotelsmap } from "./components/screens/Hotelsmap";
+import { BookTrainer } from "./components/screens/BookTrainer";
+import { BookPetnanny } from "./components/BookPetnanny";
+import { Vetdetails } from "./components/screens/vetdetails";
+import { Drawer1 } from "./components/screens/Drawer";
+import { MainTabScreen } from "./components/screens/MainTabScreen";
+import { DrawerContent } from "./components/screens/DrawerContent";
+import { SignupUser } from "./components/screens/userSignup/SignupUser";
 export default function App() {
   return (
-    /*<>
+    <>
     <NavigationContainer>
       <RootStackSCreen/>
     </NavigationContainer>
-    </>*/
-    <>
-    <PetDetection/>
     </>
+    /*<>
+    <SignupUser/>
+    </>*/
   );
 }
 /*const styles = StyleSheet.create({

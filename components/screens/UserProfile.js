@@ -21,7 +21,10 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { PetList } from './PetList';
 import { ScrollView } from 'react-native-gesture-handler';
 import { PetProfile } from './PetProfile';
-export const UserProfile = ({navigation}) => {
+export const UserProfile = ({route,navigation}) => {
+  const {userid} = route.params;
+  //const {ui} = route.params;
+  //console.log(ui)
   const [user, Setuser] = useState({});
   const [id, Setid] = useState(1);
   const [username, Setname] = useState('Stan Smith');
@@ -34,6 +37,7 @@ export const UserProfile = ({navigation}) => {
   const [country, Setcountry] = useState('Egypt');
 
   const [petinfo, Setpetinfo] = useState([]);
+  console.log("user",userid)
   const datainfo = [
     {
       _id:1,

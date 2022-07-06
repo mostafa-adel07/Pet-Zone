@@ -29,6 +29,17 @@ import { PetAccount } from "./PetAccount";
 import { PetVaccines } from "./PetVaccines";
 import { HistoryVaccines } from "./historyvaccines";
 import { VaccinesDescription } from "./vaccinesdescription";
+import { BookVet } from "./BookVet";
+import { BookTrainer } from "./BookTrainer";
+import { BookPetnanny } from "../BookPetnanny";
+import { Service, service } from "./services";
+import { Hotelsmap } from "./Hotelsmap";
+import { Vetdetails } from "./vetdetails";
+import { MainTabScreen } from "./MainTabScreen";
+import { UserProfile } from "./UserProfile";
+import { DrawerContent } from "./DrawerContent";
+import { Trainerdetails, trainerdetails } from "./trainerdetails";
+import { Petnannydetails } from "./petnannydetails";
 const Stack = createStackNavigator();
 //const Drawer = createDrawerNavigator();
 export const RootStackSCreen = () => (
@@ -45,6 +56,9 @@ export const RootStackSCreen = () => (
     <Stack.Screen name="Splahscreen" component={Splashscreen} />
     <Stack.Screen name="Login" component={Login} />
     <Stack.Screen name="Drawer1" component={Drawer1} />
+    <Stack.Screen name="HomeDrawer" component={MainTabScreen}/>
+    <Stack.Screen name="DrawerContent" component={DrawerContent}/>
+    <Stack.Screen name="UserProfile" component={UserProfile}/>
     <Stack.Screen name="typeSignup" component={TypeSignup} />
     <Stack.Screen name="SignupUser" component={SignupUser} />
     <Stack.Screen name="SignupUser1" component={SignupUser1} />
@@ -58,6 +72,14 @@ export const RootStackSCreen = () => (
     <Stack.Screen name="PetVaccine" component={PetVaccines}/>
     <Stack.Screen name="HistoryVaccine" component={HistoryVaccines}/>
     <Stack.Screen name="VaccineDescription" component={VaccinesDescription}/>
+    <Stack.Screen name="Service" component={Service}/>
+    <Stack.Screen name="Bookvet" component={BookVet}/>
+    <Stack.Screen name="Booktrainer" component={BookTrainer}/>
+    <Stack.Screen name="Bookpetnanny" component={BookPetnanny}/>
+    <Stack.Screen name="BookHotel" component={Hotelsmap}/>
+    <Stack.Screen name="Vetdetails" component={Vetdetails}/>
+    <Stack.Screen name="trainerdetails" component={Trainerdetails}/>
+    <Stack.Screen name="petnannydetails" component={Petnannydetails}/>
     
   </Stack.Navigator>
 );

@@ -87,7 +87,7 @@ export const PetAccount = () => {
           <TextInput
             style={styles.inputtext}
             placeholder="Pet Name"
-            onChangeText={(petname) => Setpetname(petname)}
+            onChangeText={(petname) => SetpetName(petname)}
             placeholderTextColor="gray"
           />
         </View>

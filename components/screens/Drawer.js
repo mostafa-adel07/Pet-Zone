@@ -6,8 +6,11 @@ import { SelectedPet } from "./SelectedAdoptPet";
 import { DrawerContent } from "./DrawerContent";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import 'react-native-gesture-handler';
+import { UserProfile } from "./UserProfile";
 const Drawer = createDrawerNavigator();
-export const Drawer1=()=>{
+export const Drawer1=({route,props})=>{
+  const {userid} = route.params;
+ // console.log(userid);
     return(
       <Drawer.Navigator  drawerContent={props => <DrawerContent {...props} />}
           screenOptions={{
@@ -19,10 +22,12 @@ export const Drawer1=()=>{
            marginTop:20,
            headerTitle:'',
           }}>
-         <Drawer.Screen name="HomeDrawer" component={MainTabScreen} />
+         <Drawer.Screen name="HomeDrawer" component={MainTabScreen}  initialParams={{userid: userid}}  />
+    
          </Drawer.Navigator>
 
      
         )
+
 }
 

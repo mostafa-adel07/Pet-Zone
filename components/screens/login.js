@@ -6,7 +6,8 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import axios from "axios";
 
 export const Login = ({ navigation }) => {
-  const [data, setData] = React.useState({
+  const [userid,setuserid]=useState(1)
+  const [data, setData] = useState({
     isValidEmail: true,
     isValidPassword: true,
   });
@@ -61,7 +62,7 @@ export const Login = ({ navigation }) => {
       });
   }
   function Login1() {
-    navigation.navigate("Drawer1");
+    navigation.navigate('Drawer1',  {userid:userid});
     /*if (data.isValidEmail && data.isValidPassword) {
       let item = { password, email };
       axios

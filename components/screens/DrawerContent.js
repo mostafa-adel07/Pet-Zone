@@ -15,7 +15,9 @@ import {
     Switch
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-export function DrawerContent(props){
+export function DrawerContent({route,props}){
+ // const {userid} = route.params;
+  //console.log("oo",userid)
     return(
     <View style={{flex:1}}>
         <DrawerContentScrollView {...props}>
@@ -42,6 +44,7 @@ export function DrawerContent(props){
             )}
             label="Profile"
             marginLeft={17}
+           // initialParams={{userid: userid}}
             onPress={() => {props.navigation.navigate('UserProfile')}}
         />
         <DrawerItem 
@@ -60,6 +63,7 @@ export function DrawerContent(props){
             marginLeft={10}
             onPress={() => {props.navigation.navigate('BreedingList')}}
         />
+         
         </Drawer.Section>
 </DrawerContentScrollView>
     <Drawer.Section style={styles.bottomDrawerSection}>
