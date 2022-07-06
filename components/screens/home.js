@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text, View, StyleSheet,SafeAreaView,StatusBar,ScrollView,TouchableOpacity } from 'react-native';
 
-export const Home=({navigation})=>{
+export const Home=({props})=>{
+  const[ui,setui]=React.useState(2)
   /*function Adopt(){
    navigation.navigate('AdoptionList')
   }
@@ -10,7 +11,9 @@ export const Home=({navigation})=>{
    }*/
   return(
   <View style={styles.container1}>
-     <TouchableOpacity style={styles.buttoncontainer1} >
+     <TouchableOpacity style={styles.buttoncontainer1} onPress={() => {props.navigation.navigate('UserProfile',{
+       ui:ui
+     })}} >
         <Text style={styles.buttontext1}>Adoption</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.buttoncontainer1} >
