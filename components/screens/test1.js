@@ -1,4 +1,4 @@
-const vaccine = [
+const vaccine1 = [
     {
         "_id": "626541fe1935b590ded0fc1a",
         "vaccineName": "newVaccine123",
