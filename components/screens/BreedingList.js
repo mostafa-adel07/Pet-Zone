@@ -21,8 +21,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 //import { Icon } from "react-native-paper/lib/typescript/components/Avatar/Avatar";
 
-export const BreedingList = ({navigation}) => {
+export const BreedingList = ({route,navigation}) => {
   //const [datainfo, Setdatainfo] = useState([]);
+  const {userid} = route.params;
+  console.log("gg",userid)
   const datainfo = [
     {petName:"charlie" , petType: "cat",petGender:"male",petBreed:"persian" ,petage:'10' ,petWeight:'56' , petColor:"white",   petProfilePic:"https://upload.wikimedia.org/wikipedia/commons/1/15/White_Persian_Cat.jpg"},
   {petName: "leo" ,petType: "dog"  ,petGender:"male",petBreed:"pug"  ,petage:'15'  ,petWeight:'72' ,  petColor:"fawn",    petProfilePic: "https://media.istockphoto.com/photos/pug-sitting-and-panting-1-year-old-isolated-on-white-picture-id450709593?k=20&m=450709593&s=612x612&w=0&h=82zzJc3Cz39B6LyrQ_N2b4zXxYzZIEH9aNDZWzrZspg="},
